@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import MainContainer from './components/mainContainer';
+import Layout from './components/layout';
 
 function App() {
   return (
-    <MainContainer/>
+    <Layout/>
   );
 }
 
