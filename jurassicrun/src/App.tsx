@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
+import MainContainer from './components/mainContainer';
 
 function App() {
   return (
-    <h1>hello</h1>
+    <MainContainer/>
   );
 }
 
