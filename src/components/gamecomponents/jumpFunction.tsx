@@ -3,13 +3,15 @@ import * as React from 'react';
 import { disposeEmitNodes } from 'typescript';
 
 const  Jump = () =>{
-    let isJumping: boolean = false;
+    let isJumping = false
     let gravity = 0.9;
     let isGameOver = false;
     let position = 0
 
     const dino = document.querySelector<HTMLElement>('.dino')!;
-    
+    if(isJumping){
+        return
+    }
     let timerId = setInterval(() => {
         if(position ===  200){
             console.log("down")
