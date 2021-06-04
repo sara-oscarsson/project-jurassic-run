@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Gameboard from './gameboard';
+import Gameboard from './gamecomponents/gameboard';
 import Info from './info';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
