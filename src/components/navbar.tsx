@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import {Link} from 'react-router-dom';
+import ThemeOfChoice from './themes'
 
 function Nav() {
   return (
@@ -13,7 +14,7 @@ function Nav() {
         <Link to='/info'>
           <li>Info</li>
         </Link>
-        
+        <ThemeOfChoice />
       </ul>
     </nav>
   );
