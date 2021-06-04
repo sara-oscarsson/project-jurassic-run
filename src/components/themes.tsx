@@ -8,48 +8,36 @@ import { url } from 'inspector';
 
 
 const options = [{
-    label: "Djungle",
-    value: "djungle",
-},
-{
-    label: "Candyland",
-    value: "candyland",
-}, 
-{
-    label: "Desert",
-    value: "desert",
-},
-{
+    id: 1,
     label: "Default",
     value: "default",
+},
+{
+    id: 2,
+    label: "Candyland",
+    value: "candyland",
+    backgroundImage: "./images/candyland.png",
+}, 
+{
+    id: 3,
+    label: "Desert",
+    value: "desert",
+    backgroundImage: "./images/desert.png",
+},
+{
+    id: 4,
+    label: "Djungle",
+    value: "djungle",
+    backgroundImage: "./images/djungle.png",
+
 }]
 
-interface Props {
-    value: string,
-    onChange: (value: string) => void;
-}
-
-
-class App extends React.Component {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      theme: "djungle",
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    console.log("Theme Selected!!");
-    this.setState({ theme: e.target.value });
-  }
-
+class ThemeOfChoice extends React.Component {
   render() {
     return (
-      <div id="App">
-        <div className="select-container">
-          <select value={this.state.theme} onChange={this.handleChange}>
+      <div>
+        <div>
+          <select>
             {options.map((option) => (
               <option value={option.value}>{option.label}</option>
             ))}
@@ -60,7 +48,9 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default ThemeOfChoice;
+
+
 
 
 
