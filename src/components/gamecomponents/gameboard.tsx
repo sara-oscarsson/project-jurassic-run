@@ -37,7 +37,14 @@ const Gameboard = () =>{
             dino.style.bottom = position + 'px'
         },20)
     } */
-    document.addEventListener("keydown", Jump);
+    
+    document.addEventListener("keydown", (e)=>{
+        if(e.keyCode == 32){
+            Jump()
+        }
+    });
+   
+   
 
     
     return(
