@@ -1,18 +1,20 @@
 import React from 'react';
+import Jump from './jumpFunction';
 
 const Gameboard = () =>{
-    const grid = document.querySelector('.grid');
+    /* HA KVAR SÅ LÄNGE, FUNKAR */
+    /* const grid = document.querySelector('.grid');
     const dino = document.querySelector('.dino');
     let isJumping = false;
     let gravity = 0.9;
     let isGameOver = false;
-    let position = 0
+    let position = 0 */
     
-    function jump(e: Event){      
-        /* const dino = Array.from(document.getElementsByClassName('dino') as HTMLCollectionOf<HTMLElement>)
-        const dino = document.querySelector('.dino'); */
+  /*   function jump(e: Event){      
         const dino = document.querySelector<HTMLElement>('.dino')!;
-        
+        if(isJumping === true){
+            return
+        }
         let timerId = setInterval(() => {
             if(position ===  200){
                 console.log("down")
@@ -21,6 +23,7 @@ const Gameboard = () =>{
                     if(position === 0){
                         isJumping = false;
                         clearInterval(downTimerId)
+                        return
                     }
                     position -= 20
                     
@@ -28,13 +31,20 @@ const Gameboard = () =>{
     
                 },20)
             }
-    
+            isJumping = true;
             console.log("jump")
             position += 20
             dino.style.bottom = position + 'px'
         },20)
-    }
-    document.addEventListener("keydown", jump);
+    } */
+    
+    document.addEventListener("keydown", (e)=>{
+        if(e.keyCode == 32){
+            Jump()
+        }
+    });
+   
+   
 
     
     return(
