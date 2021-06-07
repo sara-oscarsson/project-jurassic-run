@@ -35,7 +35,7 @@ const options = [{
 class ThemeOfChoice extends React.Component {
   render() {
     return (
-      <div>
+      <div className= "span">
         <div>
           <select>
             {options.map((option) => (

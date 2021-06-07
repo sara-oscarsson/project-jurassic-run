@@ -10,3 +10,23 @@ body {
   background-attachment: fixed;
   object-fit: contain;
 }
+
+.nav {
+  top: 0;
+  width: 100%;
+  height: 120px;
+  background-color: white;
+  flex-wrap: nowrap;
+}
+
+.centerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span {
+  list-style: none;
+  display: inline-block;
+  margin-right: 25px;
+}
