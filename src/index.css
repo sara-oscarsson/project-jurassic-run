@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./images/2.jpg);
+  /* background-image: url(./images/2.jpg); */
   background-size: cover;
   background-attachment: fixed;
   object-fit: contain;
@@ -28,5 +28,5 @@ body {
 .span {
   list-style: none;
   display: inline-block;
-  margin-right: 25px;
+  margin-left: 25px;
 }
