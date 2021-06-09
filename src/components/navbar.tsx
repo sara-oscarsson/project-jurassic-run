@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 import {Link} from 'react-router-dom';
-import ThemeOfChoice from './themes'
+import ThemeOfChoice, { Theme } from './themes';
+import ChooseTheme from './themes';
+import SimpleModal from './rulesModal';
+import ExtraModal from './extraModal';
 
-function Nav() {
+interface Props {
+  setBackground: (theme: Theme) => void,
+}
+
+interface ExtraProps {
+  isOpen: boolean
+}
+
+// const [isOpen, setIsOpen] = useState(false)
+
+function Nav(props: Props, extraProps: ExtraProps) {
   return (
     <nav className="nav centerContent">
       <h3>Logo</h3>
@@ -14,8 +27,13 @@ function Nav() {
         <Link to='/info'>
           <li className= "span">Info</li>
         </Link>
-        <ThemeOfChoice />
+        <ChooseTheme setBackground = {props.setBackground}/>
       </ul>
+      <SimpleModal/>
+      {/* <div>
+        <button onClick={() => setIsOpen(true)}>Modalicuious</button>
+        <ExtraModal open={extraProps.isOpen}></ExtraModal>
+      </div> */}
     </nav>
   );
 }
