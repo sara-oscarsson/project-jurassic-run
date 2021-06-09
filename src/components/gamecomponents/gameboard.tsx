@@ -1,65 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Jump from './jumpFunction';
 
 const Gameboard = () =>{
-    /* HA KVAR SÅ LÄNGE, FUNKAR */
-    /* const grid = document.querySelector('.grid');
-    const dino = document.querySelector('.dino');
-    let isJumping = false;
-    let gravity = 0.9;
-    let isGameOver = false;
-    let position = 0 */
-    
-  /*   function jump(e: Event){      
-        const dino = document.querySelector<HTMLElement>('.dino')!;
-        if(isJumping === true){
-            return
-        }
-        let timerId = setInterval(() => {
-            if(position ===  200){
-                console.log("down")
-                clearInterval(timerId)
-                let downTimerId = setInterval(() =>{
-                    if(position === 0){
-                        isJumping = false;
-                        clearInterval(downTimerId)
-                        return
-                    }
-                    position -= 20
-                    
-                    dino.style.bottom = position + 'px'
-    
-                },20)
-            }
-            isJumping = true;
-            console.log("jump")
-            position += 20
-            dino.style.bottom = position + 'px'
-        },20)
-    } */
-    
+    const [isGameOver, setIsGameOver] = useState<boolean>(true)
+    /* const [score, setScore] = useState<number>(0) */
+    let score: number = 0
     document.addEventListener("keydown", (e)=>{
         if(e.keyCode == 32){
             Jump()
         }
     });
+    function addScoreFunction(){
+        const showScore = document.getElementById('score')!;
+        score += 1
+        console.log(score)
+        showScore.innerText = 'Score: ' + score
+    }
+
+    function generateObstacles(){
+
+        const grid = document.querySelector<HTMLElement>('.grid')!;
+        const dino = document.querySelector<HTMLElement>('.dino')!;
+        let randomTime = Math.random() * 4000;
+        let obstaclePosition = window.innerWidth - 100;
+        let position
+        
+        let timerMove = setInterval(()=>{
+            position = dino.style.bottom;
+        if(obstaclePosition > 100 && obstaclePosition < 300){
+
+            if(position == '160px' || position == '140px' || position == '120px' || position == '80px'){
+                console.log("KROOOOOCK")
+                setIsGameOver(true)
+                clearInterval(timerMove);
+                return
+            }
+        }
+        if(obstaclePosition <= 0){
+            addScoreFunction();
+            clearInterval(timerMove)
+            generateObstacles();
+            return
+        }
+        const obstacle = document.querySelector<HTMLElement>('.obstacle')!;
+        obstaclePosition -=10
+        obstacle.style.left = obstaclePosition + 'px';
+        /* console.log(obstaclePosition) */
+        },18)
+        return(
+            <div className="obstacle" style={{
+                position: 'absolute',
+                height: '100px',
+                width: "100px",
+                backgroundColor: "orange",
+                bottom: '80px',
+            }}></div>
+        );
+
+    }
    
    
 
     
     return(
-        <>
-        <div className="dino" style={{
-        height: '100px',
-        width: "100px",
-        backgroundColor: "blue",
-        bottom: `100px`,
-        position: "absolute",
-        left: "200px" }}>
+        <div className="grid" style={{
+            height: '80vh',
+            width: "100%",
+             }}>
+            {
+                isGameOver ? (
+                <button onClick={() => setIsGameOver(false)}>Start</button>
 
+                ) : null
+            }
+            <div className="dino" style={{
+            height: '100px',
+            width: "100px",
+            backgroundColor: "blue",
+            bottom: `80px`,
+            position: "absolute",
+            left: "200px",
+            }}>
+
+            </div>
+            {
+                !isGameOver ? (
+                 generateObstacles()
+                ) : <h1>Game Over</h1>
+            }
+            <h2 id="score"></h2>
         </div>
-        {/* <button onClick={test}>Hej</button> */}
-        </>
     );
 }
 
