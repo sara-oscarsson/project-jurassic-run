@@ -15,22 +15,39 @@ interface ExtraProps {
   isOpen: boolean
 }
 
-// const [isOpen, setIsOpen] = useState(false)
 
 function Nav(props: Props, extraProps: ExtraProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const changeModalState = ()=>{
+    setIsModalOpen(true)
+    
+  }
   return (
     <nav className="nav centerContent">
-       <img src={imageSource} alt="" />
-        <ul className= "span">
-         <Link to='/gameboard'>
-            <li className= "span">Gameboard</li>
-          </Link>
-          <Link to='/info'>
-           <li className= "span">Info</li>
-         </Link>
-         <ChooseTheme setBackground = {props.setBackground}/>
-       </ul>
-       <SimpleModal/>
+      <img src={imageSource} alt="" />
+      <ul className= "span">
+        <Link to='/gameboard'>
+          <li className= "span">Gameboard</li>
+        </Link>
+        <Link to='/info'>
+          <li className= "span">Info</li>
+        </Link>
+        <ChooseTheme setBackground = {props.setBackground}/>
+      </ul>
+      <SimpleModal/>
+      <button onClick={changeModalState}>Modal med react router</button>
+      {
+          isModalOpen ? (
+            <ExtraModal isOpen={isModalOpen}>
+            <h3>
+            Här är en modal 
+            <button className="btn-close" onClick={() => setIsModalOpen(false)}>Stäng</button>
+            </h3>
+            </ExtraModal>
+
+          ) : null
+        }
+
       {/* <div>
         <button onClick={() => setIsOpen(true)}>Modalicuious</button>
         <ExtraModal open={extraProps.isOpen}></ExtraModal>

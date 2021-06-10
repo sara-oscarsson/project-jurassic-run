@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import Jump from './jumpFunction';
 
-const Gameboard = () =>{
+interface Props{
+    background: string
+}
+
+const Gameboard = (props: Props) =>{
+    /* 
+    Här vill vi ha states som påverkar dino och obstacles
+    i denna vill vi ha funktionerna som påverkar state
+
+    */
     const [isGameOver, setIsGameOver] = useState<boolean>(true)
     /* const [score, setScore] = useState<number>(0) */
     let score: number = 0
     document.addEventListener("keydown", (e)=>{
         if(e.keyCode == 32){
+            console.log(props.background)
             Jump()
         }
     });
@@ -66,6 +76,7 @@ const Gameboard = () =>{
         <div className="grid" style={{
             height: '80vh',
             width: "100%",
+            backgroundImage: `url(${props.background})`
              }}>
             {
                 isGameOver ? (
@@ -76,7 +87,7 @@ const Gameboard = () =>{
             <div className="dino" style={{
             height: '100px',
             width: "100px",
-            backgroundColor: "blue",
+            backgroundColor: 'blue',
             bottom: `80px`,
             position: "absolute",
             left: "200px",
@@ -94,5 +105,6 @@ const Gameboard = () =>{
 }
 
 export default Gameboard;
+
 
 

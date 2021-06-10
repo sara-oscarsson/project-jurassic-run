@@ -22,34 +22,35 @@ interface Props {
   setBackground: (theme: Theme) => void
 }
 
-export default function ChooseTheme() {
-    
-    const options: Theme[] = [{
-        id: 1,
-        label: "Default",
-        value: "default",
-        backgroundImage: "./../assets/2.jpg"
-    },
-    {
-        id: 2,
-        label: "Candyland",
-        value: "candyland",
-        backgroundImage: "./../assets/candyland.png"
 
-    }, 
-    {
-        id: 3,
-        label: "Desert",
-        value: "desert",
-        backgroundImage: "./../assets/desert.png"
 
-    },
-    {
-        id: 4,
-        label: "Djungle",
-        value: "djungle",
-        backgroundImage: "./../assets/djungle.png"
 
+export const options: Theme[] = [{
+      id: 0,
+      label: "Default",
+      value: "default",
+      backgroundImage: "/static/media/2.7d271b74.jpg"
+  },
+  {
+      id: 1,
+      label: "Candyland",
+      value: "candyland",
+      backgroundImage: "/static/media/candyland.02f96d98.png"
+
+  }, 
+  {
+      id: 2,
+      label: "Desert",
+      value: "desert",
+      backgroundImage: "/static/media/desert.498568f4.png"
+
+  },
+  {
+      id: 3,
+      label: "Djungle",
+      value: "djungle",
+      backgroundImage: "./static/media/djungle.fa38d68e.png"
+  }]
 
 
 export default function ChooseTheme(props: Props) {
@@ -58,7 +59,9 @@ export default function ChooseTheme(props: Props) {
 
     function newBackground(id: string) {
       let index = Number(id)
-      props.setBackground(options[index - 1]) /* Byt ut till en find-funktion */
+      console.log(id)
+      props.setBackground(options[index])
+      /* props.setBackground(options[index - 1]) */
 
     }
     
