@@ -50,7 +50,7 @@ export default function SimpleModal() {
       <p id="simple-modal-description">
         You play the game by pressing spacebar.
         The goal of the game is to jump over as many obstacles as possible.
-        You lose when you an obstacle hit you.
+        You lose when an obstacle hit you.
         You will recieve points for every obstacle you clear.
         good luck!=)
       </p>
@@ -60,7 +60,7 @@ export default function SimpleModal() {
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Open Modal
+        Modal material ui
       </button>
       <Modal
         open={open}
