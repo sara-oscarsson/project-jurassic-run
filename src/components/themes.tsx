@@ -29,27 +29,27 @@ export const options: Theme[] = [{
       id: 0,
       label: "Default",
       value: "default",
-      backgroundImage: "/static/media/2.7d271b74.jpg"
+      backgroundImage: mainpic
   },
   {
       id: 1,
       label: "Candyland",
       value: "candyland",
-      backgroundImage: "/static/media/candyland.02f96d98.png"
+      backgroundImage: candyland
 
   }, 
   {
       id: 2,
       label: "Desert",
       value: "desert",
-      backgroundImage: "/static/media/desert.498568f4.png"
+      backgroundImage: desert
 
   },
   {
       id: 3,
       label: "Djungle",
       value: "djungle",
-      backgroundImage: "./static/media/djungle.fa38d68e.png"
+      backgroundImage: djungle
   }]
 
 

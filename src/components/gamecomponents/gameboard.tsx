@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Jump from './jumpFunction';
+import desert from './../../assets/desert.png';
+import candyland from './../../assets/candyland.png';
+import djungle from './../../assets/djungle.png';
+import defaultBild from './../../assets/2.jpg';
+
 
 interface Props{
-    background: string
+    background: {
+        id: number,
+        label: string,
+        value: string,
+        backgroundImage: string
+
+    }
 }
 
 const Gameboard = (props: Props) =>{
@@ -11,12 +22,15 @@ const Gameboard = (props: Props) =>{
     i denna vill vi ha funktionerna som påverkar state
 
     */
+   useEffect(()=>{
+       console.log(props.background)
+
+   })
     const [isGameOver, setIsGameOver] = useState<boolean>(true)
     /* const [score, setScore] = useState<number>(0) */
     let score: number = 0
     document.addEventListener("keydown", (e)=>{
         if(e.keyCode == 32){
-            console.log(props.background)
             Jump()
         }
     });
@@ -76,7 +90,7 @@ const Gameboard = (props: Props) =>{
         <div className="grid" style={{
             height: '80vh',
             width: "100%",
-            backgroundImage: `url(${props.background})`
+            backgroundImage: `url(${props.background.backgroundImage})`
              }}>
             {
                 isGameOver ? (
