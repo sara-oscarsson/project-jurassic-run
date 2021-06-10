@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { CSSProperties } from 'react';
-import desert from './images/desert.png'
-import candyland from './images/candyland.png'
-import djungle from './images/djungle.png' 
- import mainpic from './images/2.jpg'
+import desert from './../assets/desert.png'
+import candyland from './../assets/candyland.png'
+import djungle from './../assets/djungle.png' 
+import mainpic from './../assets/2.jpg'
 import { useState } from 'react';
 import { url } from 'inspector';
 import { Select } from '@material-ui/core';
 import '../index.css'
+
 
 import { fileURLToPath } from 'url';
 export interface Theme {
@@ -20,9 +21,9 @@ export interface Theme {
 interface Props {
   setBackground: (theme: Theme) => void
 }
-/* 
 
-*/
+
+
 
 export const options: Theme[] = [{
       id: 0,
@@ -49,8 +50,8 @@ export const options: Theme[] = [{
       label: "Djungle",
       value: "djungle",
       backgroundImage: "./static/media/djungle.fa38d68e.png"
-
   }]
+
 
 export default function ChooseTheme(props: Props) {
     
