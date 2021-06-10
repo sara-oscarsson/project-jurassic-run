@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 import {Link} from 'react-router-dom';
-import ThemeOfChoice from './themes'
 import imageSource from './../assets/logo.png'
+import ThemeOfChoice, { Theme } from './themes';
+import ChooseTheme from './themes';
+import SimpleModal from './rulesModal';
+import ExtraModal from './extraModal';
 
-function Nav() {
+interface Props {
+  setBackground: (theme: Theme) => void,
+}
 
-  console.log(imageSource)
+interface ExtraProps {
+  isOpen: boolean
+}
 
+// const [isOpen, setIsOpen] = useState(false)
+
+function Nav(props: Props, extraProps: ExtraProps) {
   return (
     <nav className="nav centerContent">
-        <img src={imageSource} alt="" />
+       <img src={imageSource} alt="" />
         <ul className= "span">
-          <Link to='/gameboard'>
+         <Link to='/gameboard'>
             <li className= "span">Gameboard</li>
           </Link>
           <Link to='/info'>
-            <li className= "span">Info</li>
-          </Link>
-          <ThemeOfChoice />
-        </ul>
-      </nav>
-  )
+           <li className= "span">Info</li>
+         </Link>
+         <ChooseTheme setBackground = {props.setBackground}/>
+       </ul>
+       <SimpleModal/>
+      {/* <div>
+        <button onClick={() => setIsOpen(true)}>Modalicuious</button>
+        <ExtraModal open={extraProps.isOpen}></ExtraModal>
+      </div> */}
+    </nav>
+  );
 }
 
 

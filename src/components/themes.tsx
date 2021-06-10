@@ -7,12 +7,19 @@ import mainpic from './../assets/2.jpg'
 import { useState } from 'react';
 import { url } from 'inspector';
 import { Select } from '@material-ui/core';
+import '../index.css'
 
-interface Theme {
+
+import { fileURLToPath } from 'url';
+export interface Theme {
     id: number,
     label: string,
     value: string,
     backgroundImage: string
+}
+
+interface Props {
+  setBackground: (theme: Theme) => void
 }
 
 export default function ChooseTheme() {
@@ -43,40 +50,27 @@ export default function ChooseTheme() {
         value: "djungle",
         backgroundImage: "./../assets/djungle.png"
 
-    }]
 
+
+export default function ChooseTheme(props: Props) {
     
-    const [background, setBackground]=useState("default")
+    //  const [background, setBackground]=useState("default")
 
     function newBackground(id: string) {
-        
-        setBackground(id) /* Byt ut till en find-funktion */
+      let index = Number(id)
+      props.setBackground(options[index - 1]) /* Byt ut till en find-funktion */
 
     }
     
     return (
-    <div>
-        <style>{background}</style>
+    <div className= "span">
         <div>
             <select onChange={(e) => newBackground(e.target.value)}>
               {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
+                <option value={option.id}>{option.label}</option>
               ))}
             </select>
           </div>
         </div>
       );
     }
-
-    
-
-
-
-
-
-
-
-
-
-
- 

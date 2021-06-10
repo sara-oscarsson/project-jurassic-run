@@ -3,15 +3,39 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './navbar';
 import Gameboard from './gamecomponents/gameboard';
 import ViewContainer from './viewContainer';
+import { useState } from 'react'
+import { options, Theme } from './themes';
+import { useEffect } from 'react';
+import { url } from 'inspector';
 
-
+let chosenBackground
 
 export default function Layout(){
+    const [background, setBackground]=useState<Theme>(options[0])
+
+    const setSelectedBackground = (theme: Theme) => { setBackground(theme) }
+    let body = document.body
+    body.classList.add('backgroundBody')
+    
+
+    useEffect(() => {
+       
+       chosenBackground = background.backgroundImage
+       console.log(chosenBackground)
+
+       body.style.backgroundImage = "url(" + chosenBackground + ")"
+
+    })
+
     return(
         <Router>
-            <Nav/>
+            <Nav setBackground={setSelectedBackground}/>
             <ViewContainer/>        
         </Router>
     );
 
+}
+
+const backgroundBody: React.CSSProperties = {
+  //  backgroundImage: `url(${chosenBackground})`
 }

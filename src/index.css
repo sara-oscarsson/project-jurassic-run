@@ -28,12 +28,10 @@ body {
 .span {
   list-style: none;
   display: inline-block;
-  margin-right: 25px;
+  margin-left: 25px;
 }
 
 img {
   height: 110px;
   width: 350px;
-  /*   background-image: url(./images/logo.png);
- */
 }
