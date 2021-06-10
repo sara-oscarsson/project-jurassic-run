@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../index.css';
 import {Link} from 'react-router-dom';
+import imageSource from './../assets/logo.png'
 import ThemeOfChoice, { Theme } from './themes';
 import ChooseTheme from './themes';
 import SimpleModal from './rulesModal';
@@ -19,17 +20,17 @@ interface ExtraProps {
 function Nav(props: Props, extraProps: ExtraProps) {
   return (
     <nav className="nav centerContent">
-      <h3>Logo</h3>
-      <ul className= "span">
-        <Link to='/gameboard'>
-          <li className= "span">Gameboard</li>
-        </Link>
-        <Link to='/info'>
-          <li className= "span">Info</li>
-        </Link>
-        <ChooseTheme setBackground = {props.setBackground}/>
-      </ul>
-      <SimpleModal/>
+       <img src={imageSource} alt="" />
+        <ul className= "span">
+         <Link to='/gameboard'>
+            <li className= "span">Gameboard</li>
+          </Link>
+          <Link to='/info'>
+           <li className= "span">Info</li>
+         </Link>
+         <ChooseTheme setBackground = {props.setBackground}/>
+       </ul>
+       <SimpleModal/>
       {/* <div>
         <button onClick={() => setIsOpen(true)}>Modalicuious</button>
         <ExtraModal open={extraProps.isOpen}></ExtraModal>
@@ -37,5 +38,7 @@ function Nav(props: Props, extraProps: ExtraProps) {
     </nav>
   );
 }
+
+
 
 export default Nav;
