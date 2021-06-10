@@ -41,7 +41,7 @@ const ViewContainer = (props: Props) =>{
             <Route path="/" exact component={Home}/>
             <Route path="/info" component={Info}/>
             <div /*style = { gameStyle }*/>
-            <Route path="/gameboard" component={() => <Gameboard background={props.background.backgroundImage}/>}/>
+            <Route path="/gameboard" component={() => <Gameboard background={props.background}/>}/>
             </div>
             
         </Switch>
