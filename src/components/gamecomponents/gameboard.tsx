@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Jump from './jumpFunction';
-import desert from './../../assets/desert.png';
-import candyland from './../../assets/candyland.png';
-import djungle from './../../assets/djungle.png';
-import defaultBild from './../../assets/2.jpg';
+import Dino from './dino';
 
 
 interface Props{
@@ -27,6 +24,7 @@ const Gameboard = (props: Props) =>{
 
    })
     const [isGameOver, setIsGameOver] = useState<boolean>(true)
+    const [jumpHeight, setJumpHeight] = useState<number>(80)
     /* const [score, setScore] = useState<number>(0) */
     let score: number = 0
     document.addEventListener("keydown", (e)=>{
@@ -88,32 +86,20 @@ const Gameboard = (props: Props) =>{
     
     return(
         <div className="grid" style={{
-            height: '80vh',
+            height: '90vh',
             width: "100%",
-            backgroundImage: `url(${props.background.backgroundImage})`
+            backgroundImage: `url(${props.background.backgroundImage})`,
+            backgroundSize: 'cover',
+            objectFit: 'contain',
+            
              }}>
             {
                 isGameOver ? (
                 <button onClick={() => setIsGameOver(false)}>Start</button>
 
-                ) : null
+                ) : <Dino jumpHeight={jumpHeight}/>
             }
-            <div className="dino" style={{
-            height: '100px',
-            width: "100px",
-            backgroundColor: 'blue',
-            bottom: `80px`,
-            position: "absolute",
-            left: "200px",
-            }}>
-
-            </div>
-            {
-                !isGameOver ? (
-                 generateObstacles()
-                ) : <h1>Game Over</h1>
-            }
-            <h2 id="score"></h2>
+            
         </div>
     );
 }
