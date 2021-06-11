@@ -64,14 +64,6 @@ body {
 
 .infoDino {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
+  justify-content: center;
   margin-top: 60px;
-}
-
-.infoDino h3 {
-  width: 35%;
-  height: auto;
 }
