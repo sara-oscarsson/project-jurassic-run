@@ -7,35 +7,31 @@ import { useState } from 'react'
 import { options, Theme } from './themes';
 import { useEffect } from 'react';
 import { url } from 'inspector';
+import '../assets/candyland.png';
 
-let chosenBackground
+
 
 export default function Layout(){
     const [background, setBackground]=useState<Theme>(options[0])
 
     const setSelectedBackground = (theme: Theme) => { setBackground(theme) }
-    let body = document.body
-    body.classList.add('backgroundBody')
+    /* let body = document.body */
+    /* body.classList.add('backgroundBody') */
     
-
-    useEffect(() => {
-       
-       chosenBackground = background.backgroundImage
-       console.log(chosenBackground)
-
-       body.style.backgroundImage = "url(" + chosenBackground + ")"
-
-    })
 
     return(
         <Router>
             <Nav setBackground={setSelectedBackground}/>
-            <ViewContainer/>        
+
+            <ViewContainer background={background}/>        
+
         </Router>
     );
 
 }
 
-const backgroundBody: React.CSSProperties = {
-  //  backgroundImage: `url(${chosenBackground})`
-}
+/* const backgroundBody: React.CSSProperties = {
+   backgroundImage: `url(${chosenBackground})`,
+   width: '100%',
+   height: '100vh'
+} */

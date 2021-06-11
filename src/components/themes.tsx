@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { CSSProperties } from 'react';
-import desert from './images/desert.png'
-import candyland from './images/candyland.png'
-import djungle from './images/djungle.png' 
- import mainpic from './images/2.jpg'
+import desert from './../assets/desert.png'
+import candyland from './../assets/candyland.png'
+import djungle from './../assets/djungle.png' 
+import mainpic from './../assets/2.jpg'
 import { useState } from 'react';
 import { url } from 'inspector';
 import { Select } from '@material-ui/core';
 import '../index.css'
+
 
 import { fileURLToPath } from 'url';
 export interface Theme {
@@ -22,33 +23,35 @@ interface Props {
 }
 
 
+
+
 export const options: Theme[] = [{
-      id: 1,
+      id: 0,
       label: "Default",
       value: "default",
-      backgroundImage: "./images/2.jpg"
+      backgroundImage: mainpic
   },
   {
-      id: 2,
+      id: 1,
       label: "Candyland",
       value: "candyland",
-      backgroundImage: "./images/candyland.png"
+      backgroundImage: candyland
 
   }, 
   {
-      id: 3,
+      id: 2,
       label: "Desert",
       value: "desert",
-      backgroundImage: "./images/desert.png"
+      backgroundImage: desert
 
   },
   {
-      id: 4,
+      id: 3,
       label: "Djungle",
       value: "djungle",
-      backgroundImage: "./images/djungle.png"
-
+      backgroundImage: djungle
   }]
+
 
 export default function ChooseTheme(props: Props) {
     
@@ -56,7 +59,9 @@ export default function ChooseTheme(props: Props) {
 
     function newBackground(id: string) {
       let index = Number(id)
-      props.setBackground(options[index - 1]) /* Byt ut till en find-funktion */
+      console.log(id)
+      props.setBackground(options[index])
+      /* props.setBackground(options[index - 1]) */
 
     }
     
