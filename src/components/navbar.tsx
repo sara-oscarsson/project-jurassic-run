@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
-import imageSource from "./../assets/logo.png";
+import imageSource from "./../assets/newLogo.png";
 import { Theme } from "./themeArray";
 import ChooseTheme from "./themes";
 import SimpleModal from "./rulesModal";
