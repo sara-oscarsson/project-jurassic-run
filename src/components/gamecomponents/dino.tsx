@@ -4,20 +4,28 @@ import dinoImage from './../../assets/dino.png';
 
 interface Props {
     jumpHeight: number
+    makeDinoJump: () => void
 }
 
 const Dino = (props: Props) =>{
+
+    
+
+
     return(
+        <>
+        <button onClick={props.makeDinoJump}>JUMP</button>
         <div className="dino" style={{
-            height: '200px',
-            width: "200px",
+            height: '150px',
+            width: "250px",
             backgroundImage: `url(${dinoImage})`,
             bottom: `${props.jumpHeight}px`,
             position: "absolute",
-            left: "200px",
+            left: "150px",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat"
             }}/>
+        </>
     );
 }
 export default Dino;

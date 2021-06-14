@@ -4,7 +4,7 @@ import Nav from './navbar';
 import Gameboard from './gamecomponents/gameboard';
 import ViewContainer from './viewContainer';
 import { useState } from 'react'
-import { options, Theme } from './themes';
+import { Options, Theme } from './themeArray';
 import { useEffect } from 'react';
 import { url } from 'inspector';
 import '../assets/candyland.png';
@@ -13,7 +13,7 @@ import ErrorBoundary from './errorBoundry';
 
 
 export default function Layout(){
-    const [background, setBackground]=useState<Theme>(options[0])
+    const [background, setBackground]=useState<Theme>(Options[0])
 
     const setSelectedBackground = (theme: Theme) => { setBackground(theme) }
     /* let body = document.body */

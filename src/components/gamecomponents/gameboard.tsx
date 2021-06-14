@@ -1,6 +1,7 @@
+import { time } from 'console';
 import React, { useState, useEffect } from 'react';
-import Jump from './jumpFunction';
 import Dino from './dino';
+import Obstacle from './obstacle';
 
 
 interface Props{
@@ -19,92 +20,116 @@ const Gameboard = (props: Props) =>{
     i denna vill vi ha funktionerna som påverkar state
 
     */
-   useEffect(()=>{
-       console.log(props.background)
-
-   })
     const [isGameOver, setIsGameOver] = useState<boolean>(true)
-    const [jumpHeight, setJumpHeight] = useState<number>(80)
-    /* const [score, setScore] = useState<number>(0) */
-    let score: number = 0
-    document.addEventListener("keydown", (e)=>{
-        if(e.keyCode == 32){
-            Jump()
-        }
-    });
-    function addScoreFunction(){
-        const showScore = document.getElementById('score')!;
-        score += 1
-        console.log(score)
-        showScore.innerText = 'Score: ' + score
-    }
-
-    function generateObstacles(){
-
-        const grid = document.querySelector<HTMLElement>('.grid')!;
-        const dino = document.querySelector<HTMLElement>('.dino')!;
-        let randomTime = Math.random() * 4000;
-        let obstaclePosition = window.innerWidth - 100;
-        let position
-        
-        let timerMove = setInterval(()=>{
-            position = dino.style.bottom;
-        if(obstaclePosition > 100 && obstaclePosition < 300){
-
-            if(position == '160px' || position == '140px' || position == '120px' || position == '80px'){
-                console.log("KROOOOOCK")
-                setIsGameOver(true)
-                clearInterval(timerMove);
-                return
-            }
-        }
-        if(obstaclePosition <= 0){
-            addScoreFunction();
-            clearInterval(timerMove)
-            generateObstacles();
-            return
-        }
-        const obstacle = document.querySelector<HTMLElement>('.obstacle')!;
-        obstaclePosition -=10
-        obstacle.style.left = obstaclePosition + 'px';
-        /* console.log(obstaclePosition) */
-        },18)
-        return(
-            <div className="obstacle" style={{
-                position: 'absolute',
-                height: '100px',
-                width: "100px",
-                backgroundColor: "orange",
-                bottom: '80px',
-            }}></div>
-        );
-
-    }
-   
-   
-
+    const [jumpHeight, setJumpHeight] = useState<number>(20)
+    let windowWidth = window.innerWidth - 100;
+    const [obstaclePosition, setObstaclePosition] = useState<number>(windowWidth)
+    const [score, setScore] = useState<number>(0)
     
-    return(
-        <div className="grid" style={{
-            height: '90vh',
-            width: "100%",
-            backgroundImage: `url(${props.background.backgroundImage})`,
-            backgroundSize: 'cover',
-            objectFit: 'contain',
-            
-             }}>
-            {
-                isGameOver ? (
-                <button onClick={() => setIsGameOver(false)}>Start</button>
+    /* const [score, setScore] = useState<number>(0) */
+    let jumpSpeed = 20;
+    let jumpTimer: NodeJS.Timeout;
+    let fallTimer: NodeJS.Timeout;
 
-                ) : <Dino jumpHeight={jumpHeight}/>
+
+    const dinoJumpNew = ()=> {
+        /* if(jumpHeight == 80){
+            let jumpTimer = setInterval(()=> {
+                setJumpHeight(jumpHeight => jumpHeight +10)
+            },30)
+            return ()=> {
+                clearInterval(jumpTimer)
             }
-            
-        </div>
+        } */
+        if(jumpHeight == 20){
+            setJumpHeight(jumpHeight=> jumpHeight + 300)
+
+        }
+
+    } 
+    useEffect(()=> {
+        if(jumpHeight > 20){
+            let fallTimer = setInterval(()=> {
+                setJumpHeight(jumpHeight => jumpHeight -10)
+            },20)
+            return ()=> {
+                clearInterval(fallTimer)
+            }
+        }
+    })
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition > 0){
+                let obstacleTimer = setInterval(()=> {
+                    setObstaclePosition(obstaclePosition => obstaclePosition - 10)
+                },20)
+                return ()=> {
+                    clearInterval(obstacleTimer)
+                }
+            }
+        }
+    })
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition < 0){  
+                setScore(score => score + 10);      
+                setObstaclePosition(windowWidth);
+                let obstacleTimer = setInterval(()=> {
+                    setObstaclePosition(obstaclePosition => obstaclePosition - 10)
+                },20)
+                return ()=> {
+                    clearInterval(obstacleTimer)
+                }
+            }
+        }
+    })
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition < 280 && obstaclePosition > 150 && jumpHeight < 90){  
+                setIsGameOver(true) 
+                setObstaclePosition(windowWidth) 
+                setScore(0)    
+                console.log("%cKROCK!!!!!", "color: red")
+            }
+        }
+    })
+
+ 
+   
+    return(
+      /*   <div style={{display: "flex",
+        justifyContent: "center",}}> */
+
+            <div className="grid" style={{
+                height: '90vh',
+                width: "100%",
+                backgroundImage: `url(${props.background.backgroundImage})`,
+                backgroundSize: 'cover',
+                objectFit: 'contain',
+                overflow: "hidden"
+                
+                }}>
+                    <div>Score: {score}</div>
+                {
+                    isGameOver ? (
+                    <button onClick={() => setIsGameOver(false)}>Start</button>
+                    
+                    ) : <Dino jumpHeight={jumpHeight} makeDinoJump={dinoJumpNew}/>
+                }
+                <Obstacle obstaclePosition={obstaclePosition}/>
+            </div>
+       /*  </div> */
     );
 }
 
 export default Gameboard;
+
+const btnStyle: React.CSSProperties = {
+    padding: "16px",
+    height: "35px",
+    textAlign: "center"
+
+}
 
 
 
