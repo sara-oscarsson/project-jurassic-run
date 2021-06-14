@@ -1,6 +1,7 @@
 import { time } from 'console';
 import React, { useState, useEffect } from 'react';
 import Dino from './dino';
+import Obstacle from './obstacle';
 
 
 interface Props{
@@ -21,15 +22,14 @@ const Gameboard = (props: Props) =>{
     */
     const [isGameOver, setIsGameOver] = useState<boolean>(true)
     const [jumpHeight, setJumpHeight] = useState<number>(20)
-    const [isJumping, setIsJumping] = useState<boolean>(false)
+    let windowWidth = window.innerWidth - 100;
+    const [obstaclePosition, setObstaclePosition] = useState<number>(windowWidth)
+    const [score, setScore] = useState<number>(0)
     
     /* const [score, setScore] = useState<number>(0) */
     let jumpSpeed = 20;
     let jumpTimer: NodeJS.Timeout;
     let fallTimer: NodeJS.Timeout;
-
-    let left = document.querySelector<HTMLElement>('.grid')!;
-    console.log(left)
 
 
     const dinoJumpNew = ()=> {
@@ -42,7 +42,7 @@ const Gameboard = (props: Props) =>{
             }
         } */
         if(jumpHeight == 20){
-            setJumpHeight(jumpHeight=> jumpHeight + 200)
+            setJumpHeight(jumpHeight=> jumpHeight + 300)
 
         }
 
@@ -51,13 +51,50 @@ const Gameboard = (props: Props) =>{
         if(jumpHeight > 20){
             let fallTimer = setInterval(()=> {
                 setJumpHeight(jumpHeight => jumpHeight -10)
-            },30)
+            },20)
             return ()=> {
                 clearInterval(fallTimer)
             }
         }
     })
-       
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition > 0){
+                let obstacleTimer = setInterval(()=> {
+                    setObstaclePosition(obstaclePosition => obstaclePosition - 10)
+                },20)
+                return ()=> {
+                    clearInterval(obstacleTimer)
+                }
+            }
+        }
+    })
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition < 0){  
+                setScore(score => score + 10);      
+                setObstaclePosition(windowWidth);
+                let obstacleTimer = setInterval(()=> {
+                    setObstaclePosition(obstaclePosition => obstaclePosition - 10)
+                },20)
+                return ()=> {
+                    clearInterval(obstacleTimer)
+                }
+            }
+        }
+    })
+    useEffect(()=> {
+        if(!isGameOver){
+            if(obstaclePosition < 280 && obstaclePosition > 150 && jumpHeight < 90){  
+                setIsGameOver(true) 
+                setObstaclePosition(windowWidth) 
+                setScore(0)    
+                console.log("%cKROCK!!!!!", "color: red")
+            }
+        }
+    })
+
+ 
    
     return(
       /*   <div style={{display: "flex",
@@ -69,21 +106,30 @@ const Gameboard = (props: Props) =>{
                 backgroundImage: `url(${props.background.backgroundImage})`,
                 backgroundSize: 'cover',
                 objectFit: 'contain',
+                overflow: "hidden"
                 
                 }}>
+                    <div>Score: {score}</div>
                 {
                     isGameOver ? (
                     <button onClick={() => setIsGameOver(false)}>Start</button>
                     
                     ) : <Dino jumpHeight={jumpHeight} makeDinoJump={dinoJumpNew}/>
                 }
-                
+                <Obstacle obstaclePosition={obstaclePosition}/>
             </div>
        /*  </div> */
     );
 }
 
 export default Gameboard;
+
+const btnStyle: React.CSSProperties = {
+    padding: "16px",
+    height: "35px",
+    textAlign: "center"
+
+}
 
 
 
