@@ -8,6 +8,7 @@ import { Options, Theme } from './themeArray';
 import { useEffect } from 'react';
 import { url } from 'inspector';
 import '../assets/candyland.png';
+import ErrorBoundary from './errorBoundry';
 
 
 
@@ -21,8 +22,9 @@ export default function Layout(){
 
     return(
         <Router>
+            <ErrorBoundary>
             <Nav setBackground={setSelectedBackground}/>
-
+            </ErrorBoundary>
             <ViewContainer background={background}/>        
 
         </Router>

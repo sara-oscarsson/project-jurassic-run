@@ -3,6 +3,7 @@ import Gameboard from './gamecomponents/gameboard';
 import Info from './info';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './home';
+import ErrorBoundary from './errorBoundry';
 
 
 interface Props{
@@ -39,10 +40,11 @@ const ViewContainer = (props: Props) =>{
     return(
         <Switch>
             <Route path="/" exact component={Home}/>
-            <Route path="/info" component={Info}/>
-            <div /*style = { gameStyle }*/>
-            <Route path="/gameboard" component={() => <Gameboard background={props.background}/>}/>
-            </div>
+            <ErrorBoundary>
+                <Route path="/info" component={Info}/>
+                <Route path="/gameboard" component={() => <Gameboard background={props.background}/>}/>
+            </ErrorBoundary>
+
             
         </Switch>
     );
