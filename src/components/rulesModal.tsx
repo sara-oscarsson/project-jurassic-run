@@ -60,7 +60,7 @@ export default function SimpleModal() {
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Modal material ui
+        Rules
       </button>
       <Modal
         open={open}

@@ -27,19 +27,19 @@ function Nav(props: Props, extraProps: ExtraProps) {
       </Link>
       <ul className="span">
         <Link to="/gameboard">
-          <li className="span">Gameboard</li>
+          <li className="span">Start Game</li>
         </Link>
         <Link to="/info">
-          <li className="span">Info</li>
+          <li className="span">About Dino</li>
         </Link>
         <ChooseTheme setBackground={props.setBackground} />
       </ul>
       <SimpleModal />
-      <button onClick={changeModalState}>Modal med react router</button>
+      <button onClick={changeModalState}>Why cant dinosaurs clapp their hands?</button>
       {isModalOpen ? (
         <ExtraModal isOpen={isModalOpen}>
           <h3>
-            Här är en modal
+            Because theyre extinct
             <button className="btn-close" onClick={() => setIsModalOpen(false)}>
               Stäng
             </button>

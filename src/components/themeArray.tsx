@@ -16,7 +16,7 @@ export interface Theme {
 
 export const Options: Theme[] = [{
       id: 0,
-      label: "Default",
+      label: "Choose Theme",
       value: "default",
       backgroundImage: mainpic
   },
