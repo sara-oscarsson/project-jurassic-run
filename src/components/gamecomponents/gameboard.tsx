@@ -67,7 +67,7 @@ const Gameboard = (props: Props) => {
   });
   useEffect(() => {
     if (!isGameOver) {
-      if (obstaclePosition < 0) {
+      if (obstaclePosition <= 0) {
         setScore((score) => score + 10);
         setObstaclePosition(windowWidth);
         let obstacleTimer = setInterval(() => {
