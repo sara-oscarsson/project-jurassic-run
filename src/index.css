@@ -67,3 +67,9 @@ body {
   justify-content: center;
   margin-top: 60px;
 }
+
+.startButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
