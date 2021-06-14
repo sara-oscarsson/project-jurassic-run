@@ -84,11 +84,15 @@ const Gameboard = (props: Props) => {
       if (obstaclePosition < 280 && obstaclePosition > 150 && jumpHeight < 90) {
         setIsGameOver(true);
         setObstaclePosition(windowWidth);
-        setScore(0);
         console.log("%cKROCK!!!!!", "color: red");
       }
     }
   });
+
+  function StartGame() {
+    setIsGameOver(false);
+    setScore(0);
+  }
 
   return (
     /*   <div style={{display: "flex",
@@ -121,7 +125,7 @@ const Gameboard = (props: Props) => {
               justifyContent: "center",
               alignItems: "center",
             }}
-            onClick={() => setIsGameOver(false)}
+            onClick={StartGame}
           >
             Start
           </button>
