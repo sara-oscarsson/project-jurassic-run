@@ -10,22 +10,40 @@ body {
   object-fit: contain;
 }
 
+@font-face {
+  font-family: 'JurassicPark';
+  src: url('./assets/Jurassic\ Park.ttf');
+  font-style: normal;
+  font-weight: 800;
+}
+
 .nav {
   top: 0;
   width: 100%;
   height: auto;
   background-color: white;
   flex-wrap: nowrap;
+  font-family: JurassicPark;
+  font-size: 40px;
+}
+.nav ul{
+  padding: 0px;
+}
+.nav a{
+  color: rgb(37, 82, 43);
+  
 }
 
 .centerContent {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .centerContent img {
   align-self: flex-start;
-  margin-right: 15vh;
+  margin-right: 5vh;
 }
 
 .span {
@@ -72,4 +90,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.jurassic{
+  font-family: JurassicPark;
+  font-size: 120px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.jurassicFont{
+  font-family: JurassicPark;
+  
+}
+select{
+  font-family: JurassicPark;
+
 }

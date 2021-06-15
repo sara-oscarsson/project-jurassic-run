@@ -7,6 +7,7 @@ import ChooseTheme from "./themes";
 import SimpleModal from "./rulesModal";
 import ExtraModal from "./extraModal";
 
+
 interface Props {
   setBackground: (theme: Theme) => void;
 }
@@ -32,27 +33,43 @@ function Nav(props: Props, extraProps: ExtraProps) {
         <Link to="/info">
           <li className="span">About Dino</li>
         </Link>
-        <ChooseTheme setBackground={props.setBackground} />
-      </ul>
-      <SimpleModal />
-      <button onClick={changeModalState}>Why cant dinosaurs clapp their hands?</button>
+      <li className="span">
+        <SimpleModal />
+      </li>
+        <li className="span">
+        <button className='jurassicFont' style={ styleModal } onClick={changeModalState}>Why cant dinosaurs clap their hands?</button>
+      </li>
       {isModalOpen ? (
         <ExtraModal isOpen={isModalOpen}>
           <h3>
-            Because theyre extinct
+            Because they are extinct...
             <button className="btn-close" onClick={() => setIsModalOpen(false)}>
-              Stäng
+              Close
             </button>
           </h3>
         </ExtraModal>
       ) : null}
+        <li className="span">
+          <ChooseTheme setBackground={props.setBackground} />
 
-      {/* <div>
-        <button onClick={() => setIsOpen(true)}>Modalicuious</button>
-        <ExtraModal open={extraProps.isOpen}></ExtraModal>
-      </div> */}
+        </li>
+      </ul>
     </nav>
   );
 }
 
 export default Nav;
+
+const styleModal: React.CSSProperties = {
+  backgroundColor: 'white',
+	borderRadius: '15px',
+	border:'1px solid white',
+	display:'inline-block',
+	cursor: 'pointer',
+  fontWeight: 1000,
+	color:'rgb(37, 82, 43)',
+	fontSize: '40px',
+	textDecoration: 'none',
+  margin: '5px',
+  
+}
