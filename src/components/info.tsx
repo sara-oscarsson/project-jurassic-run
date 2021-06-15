@@ -43,10 +43,10 @@ export default function Info() {
           <CardMedia className={classes.media} image={image}></CardMedia>
           <CardContent>
             <Typography className={classes.title}>
-              Dino är en väldigt snäll dinosaurie egentligen. Han är en T-Rex
-              som älskar köttbullar med potatismos, men ogillar att stöta på
-              hinder. Hjälp Dino att hoppa över alla hinder i spelet för att
-              Dino inte ska bli ledsen!
+              Dino is a very kind dinosaur really. He is a T-Rex 
+              who loves meatballs with mashed potatoes, but does 
+              not like to encounter obstacles. Help Dino to overcome
+              all obstacles in the game so that Dino does not get sad!
             </Typography>
           </CardContent>
         </Card>
