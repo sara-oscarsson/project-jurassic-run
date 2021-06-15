@@ -18,7 +18,7 @@ export const Options: Theme[] = [{
       id: 0,
       label: "Choose Theme",
       value: "default",
-      backgroundImage: mainpic
+      backgroundImage: djungle
   },
   {
       id: 1,
@@ -36,7 +36,7 @@ export const Options: Theme[] = [{
   },
   {
       id: 3,
-      label: "Djungle",
+      label: "Grass",
       value: "djungle",
-      backgroundImage: djungle
+      backgroundImage: mainpic
   }]

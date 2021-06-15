@@ -20,8 +20,8 @@ const Gameboard = (props: Props) => {
 
     */
   const [isGameOver, setIsGameOver] = useState<boolean>(true);
-  const [jumpHeight, setJumpHeight] = useState<number>(20);
-  let windowWidth = window.innerWidth - 100;
+  const [jumpHeight, setJumpHeight] = useState<number>(40);
+  let windowWidth = window.innerWidth - 120;
   const [obstaclePosition, setObstaclePosition] = useState<number>(windowWidth);
   const [score, setScore] = useState<number>(0);
 
@@ -81,7 +81,7 @@ const Gameboard = (props: Props) => {
   });
   useEffect(() => {
     if (!isGameOver) {
-      if (obstaclePosition < 280 && obstaclePosition > 150 && jumpHeight < 90) {
+      if (obstaclePosition < 270 && obstaclePosition > 150 && jumpHeight < 100) {
         setIsGameOver(true);
         setObstaclePosition(windowWidth);
         console.log("%cKROCK!!!!!", "color: red");
@@ -104,8 +104,10 @@ const Gameboard = (props: Props) => {
         height: "90vh",
         width: "100%",
         backgroundImage: `url(${props.background.backgroundImage})`,
+        /* backgroundPosition: 'center', */
         backgroundSize: "cover",
-        objectFit: "contain",
+        objectFit: "cover",
+        backgroundRepeat: "no-repeat",
         overflow: "hidden",
       }}
     >
@@ -116,7 +118,7 @@ const Gameboard = (props: Props) => {
             style={{
               fontSize: 30,
               color: "white",
-              backgroundColor: "lightgreen",
+              backgroundColor: "green",
               height: 60,
               width: 120,
               borderRadius: 30,
@@ -124,6 +126,7 @@ const Gameboard = (props: Props) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              cursor: 'pointer'
             }}
             onClick={StartGame}
           >

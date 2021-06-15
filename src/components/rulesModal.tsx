@@ -58,8 +58,8 @@ export default function SimpleModal() {
   );
 
   return (
-    <div>
-      <button type="button" onClick={handleOpen}>
+    <>
+      <button className='jurassicFont' style={ styleModal } type="button" onClick={handleOpen}>
         Rules
       </button>
       <Modal
@@ -70,6 +70,20 @@ export default function SimpleModal() {
       >
         {body}
       </Modal>
-    </div>
+    </>
   );
+}
+
+
+const styleModal: React.CSSProperties = {
+  backgroundColor: 'white',
+	borderRadius: '15px',
+	border:'1px solid white',
+	display:'inline-block',
+	cursor: 'pointer',
+  fontWeight: 1000,
+	color:'rgb(37, 82, 43)',
+	fontSize: '40px',
+	textDecoration: 'none',
+  margin: '5px',
 }

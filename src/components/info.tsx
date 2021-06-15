@@ -6,6 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import image from "./../assets/dino.png";
+import '../index.css'
 
 const useStyles = makeStyles({
   title: {
@@ -32,10 +33,10 @@ export default function Info() {
         style={{
           display: "flex",
           justifyContent: "center",
-          fontSize: "45px",
         }}
+        className='jurassic'
       >
-        Vem är Dino?
+        Who is Dino?
       </h1>
       <div className="infoDino">
         <Card>
