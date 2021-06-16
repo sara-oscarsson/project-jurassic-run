@@ -48,7 +48,7 @@ export default function SimpleModal() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Game Rules</h2>
       <p id="simple-modal-description">
-        You play the game by pressing spacebar.
+        You play the game by pressing the jump button.<br/>
         The goal of the game is to jump over as many obstacles as possible.
         You lose when an obstacle hit you.
         You will recieve points for every obstacle you clear.
