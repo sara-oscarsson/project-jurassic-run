@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './home';
 import ErrorBoundary from './errorBoundry';
 
-
 interface Props{
     background: {
         id: number,
@@ -15,28 +14,9 @@ interface Props{
 
     }
 }
-// interface Item {
-//     id: number,
-//     label: string,
-//     value: string,
-//     backgroundImage: string
-// }
 
-// interface ChildComponentProps {
-//     id: number,
-//     label: string,
-//     value: string,
-//     backgroundImage: string
-// }
-
-// let background
-
-
-/* const ViewContainer: React.FC<ChildComponentProps> = (props) => { */
 const ViewContainer = (props: Props) =>{
     
-   // background = props.backgroundImage
-
     return(
         <Switch>
             <Route path="/" exact component={Home}/>
@@ -51,10 +31,5 @@ const ViewContainer = (props: Props) =>{
     
     
 }
-
-// const gameStyle: React.CSSProperties = {
-//   backgroundImage: `url(${background})`
-
-// }
 
 export default ViewContainer

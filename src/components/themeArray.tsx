@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import desert from './../assets/desert.png'
 import candyland from './../assets/candyland.png'
 import djungle from './../assets/djungle.png' 
@@ -11,8 +10,6 @@ export interface Theme {
     value: string,
     backgroundImage: string
 }
-
-
 
 export const Options: Theme[] = [{
       id: 0,

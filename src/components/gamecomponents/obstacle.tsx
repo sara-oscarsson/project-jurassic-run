@@ -6,8 +6,6 @@ import jurassic from './../../assets/jurassic.png';
 import sport from './../../assets/sport.png';
 import { useState, useEffect } from 'react';
 
-
-
 interface Props {
     obstaclePosition: number
 }
@@ -55,8 +53,6 @@ const Obstacle = (props: Props) =>{
         }
     })
     
-
-
     return(
         <>
         <div className="dino" style={{
@@ -72,4 +68,5 @@ const Obstacle = (props: Props) =>{
         </>
     );
 }
+
 export default Obstacle;

@@ -5,12 +5,8 @@ import { Link } from "react-router-dom";
 export const MediaComponent = () => {
     const themeSong = require('../assets/themeSong.mp3')
 
-
-
     return (
         <>
-
-        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/zHalXjs0cDA" title="YouTube player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowFullScreen></iframe> */}
             <div>
                 <img src={ trex } alt="" style={ styleMedia }/>
             </div>   

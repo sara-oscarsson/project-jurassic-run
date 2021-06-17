@@ -26,9 +26,11 @@ body {
   font-family: JurassicPark;
   font-size: 40px;
 }
+
 .nav ul{
   padding: 0px;
 }
+
 .nav a{
   color: rgb(37, 82, 43);
   
@@ -98,10 +100,12 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
 .jurassicFont{
   font-family: JurassicPark;
   
 }
+
 select{
   font-family: JurassicPark;
 

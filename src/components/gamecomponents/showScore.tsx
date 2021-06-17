@@ -22,4 +22,5 @@ const Score = (props: Props) => {
     </>
   );
 };
+
 export default Score;
