@@ -7,11 +7,9 @@ import '../index.css'
 import { Options } from './themeArray';
 import { Theme } from './themeArray';
 
-
 interface Props {
   setBackground: (theme: Theme) => void
 }
-
 
 export default function ChooseTheme(props: Props) {
   

@@ -1,4 +1,3 @@
-import { time } from "console";
 import React, { useState, useEffect } from "react";
 import Dino from "./dino";
 import Obstacle from "./obstacle";
@@ -14,18 +13,13 @@ interface Props {
 }
 
 const Gameboard = (props: Props) => {
-  /* 
-    Här vill vi ha states som påverkar dino och obstacles
-    i denna vill vi ha funktionerna som påverkar state
 
-    */
   const [isGameOver, setIsGameOver] = useState<boolean>(true);
   const [jumpHeight, setJumpHeight] = useState<number>(40);
   let windowWidth = window.innerWidth - 120;
   const [obstaclePosition, setObstaclePosition] = useState<number>(windowWidth);
   const [score, setScore] = useState<number>(0);
 
-  /* const [score, setScore] = useState<number>(0) */
   let jumpSpeed = 20;
   let jumpTimer: NodeJS.Timeout;
   let fallTimer: NodeJS.Timeout;
@@ -43,6 +37,7 @@ const Gameboard = (props: Props) => {
       setJumpHeight((jumpHeight) => jumpHeight + 300);
     }
   };
+
   useEffect(() => {
     if (jumpHeight > 20) {
       let fallTimer = setInterval(() => {
@@ -53,6 +48,7 @@ const Gameboard = (props: Props) => {
       };
     }
   });
+
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition > 0) {
@@ -65,6 +61,7 @@ const Gameboard = (props: Props) => {
       }
     }
   });
+
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition <= 0) {
@@ -79,6 +76,7 @@ const Gameboard = (props: Props) => {
       }
     }
   });
+
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition < 270 && obstaclePosition > 150 && jumpHeight < 100) {
@@ -95,9 +93,6 @@ const Gameboard = (props: Props) => {
   }
 
   return (
-    /*   <div style={{display: "flex",
-        justifyContent: "center",}}> */
-
     <div
       className="grid"
       style={{
@@ -138,7 +133,6 @@ const Gameboard = (props: Props) => {
       </div>
       <Obstacle obstaclePosition={obstaclePosition} />
     </div>
-    /*  </div> */
   );
 };
 

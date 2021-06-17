@@ -74,7 +74,6 @@ export default function SimpleModal() {
   );
 }
 
-
 const styleModal: React.CSSProperties = {
   backgroundColor: 'white',
 	borderRadius: '15px',
