@@ -19,12 +19,13 @@ body {
 
 .nav {
   top: 0;
-  width: 100%;
+  max-width: 100%;
   height: auto;
   background-color: white;
   flex-wrap: nowrap;
   font-family: JurassicPark;
   font-size: 40px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .nav ul{
@@ -41,11 +42,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-}
-
-.centerContent img {
-  align-self: flex-start;
-  margin-right: 5vh;
 }
 
 .span {
@@ -110,3 +106,4 @@ select{
   font-family: JurassicPark;
 
 }
+

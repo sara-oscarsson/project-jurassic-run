@@ -8,15 +8,15 @@ isOpen: boolean
 
 export default class ExtraModal extends Component<Props>{
     element: HTMLDivElement 
-   constructor(props: Props){
-       super(props)
-       this.element = document.createElement("div")
-       this.element.id = "modal-root"
+    constructor(props: Props){
+    super(props)
+    this.element = document.createElement("div")
+    this.element.id = "modal-root"
        
    }
    componentDidMount(){
-    document.body.appendChild(this.element)
-    console.log("did mount")
+        document.body.appendChild(this.element)
+        console.log("did mount")
 
     }
     componentWillUnmount(){

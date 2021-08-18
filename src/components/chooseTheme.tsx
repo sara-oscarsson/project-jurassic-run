@@ -31,7 +31,7 @@ export default function ChooseTheme(props: Props) {
               borderRadius: 8,
             }} onChange={(e) => newBackground(e.target.value)}>
               {Options.map((option) => (
-                <option value={option.id}>{option.label}</option>
+                <option value={option.id} key={option.id}>{option.label}</option>
               ))}
             </select>
           </div>

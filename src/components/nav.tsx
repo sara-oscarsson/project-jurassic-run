@@ -3,7 +3,7 @@ import "../index.css";
 import { Link } from "react-router-dom";
 import imageSource from "./../assets/newLogo.png";
 import { Theme } from "./themeArray";
-import ChooseTheme from "./themes";
+import ChooseTheme from "./chooseTheme";
 import SimpleModal from "./rulesModal";
 import ExtraModal from "./extraModal";
 
@@ -18,15 +18,26 @@ interface ExtraProps {
 
 function Nav(props: Props, extraProps: ExtraProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mobile, setIsMobile] = useState(false);
   const changeModalState = () => {
     setIsModalOpen(true);
   };
+
+  window.addEventListener('resize', () => {
+    console.log(window.innerWidth)
+    if(window.innerWidth < 800){
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  })
+
   return (
-    <nav className="nav centerContent">
+    <nav className="nav centerContent" style={ mobile ? mobileStyle : computer }>
       <Link to="/">
-        <img src={imageSource} alt="" />
+        <img src={imageSource} alt="" style={ mobile ? mobileImg : computerImg }/>
       </Link>
-      <ul className="span">
+      <ul className="span"  style={ mobile ? mobileStyle : computer }>
         <Link to="/gameboard">
           <li className="span">Start Game</li>
         </Link>
@@ -72,4 +83,31 @@ const styleModal: React.CSSProperties = {
 	textDecoration: 'none',
   margin: '5px',
   
+}
+const computer: React.CSSProperties = {
+  backgroundColor: 'white'
+
+	 
+}
+
+const computerImg: React.CSSProperties = {
+  alignSelf: 'flex-start',
+  marginRight: '5vh',
+
+	 
+}
+const mobileImg: React.CSSProperties = {
+  alignSelf: 'center',
+  marginRight: '0',
+  width: '100%'
+
+	 
+}
+
+const mobileStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column'
+	
 }
