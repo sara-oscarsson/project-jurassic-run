@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dino from "./dino";
 import Obstacle from "./obstacle";
-import Score from "./showScore";
+import Score from "./score";
 
 interface Props {
   background: {
@@ -24,6 +24,7 @@ const Gameboard = (props: Props) => {
   let jumpTimer: NodeJS.Timeout;
   let fallTimer: NodeJS.Timeout;
 
+  /* dino hoppar */
   const dinoJumpNew = () => {
     /* if(jumpHeight == 80){
             let jumpTimer = setInterval(()=> {
@@ -38,6 +39,7 @@ const Gameboard = (props: Props) => {
     }
   };
 
+/* dino faller */
   useEffect(() => {
     if (jumpHeight > 20) {
       let fallTimer = setInterval(() => {
@@ -49,6 +51,7 @@ const Gameboard = (props: Props) => {
     }
   });
 
+  /* obstacle rör sig mot dino */
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition > 0) {
@@ -62,6 +65,7 @@ const Gameboard = (props: Props) => {
     }
   });
 
+  /* poäng om obstacle når 0 */
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition <= 0) {
@@ -77,6 +81,7 @@ const Gameboard = (props: Props) => {
     }
   });
 
+  /* kollar efter krock */
   useEffect(() => {
     if (!isGameOver) {
       if (obstaclePosition < 270 && obstaclePosition > 150 && jumpHeight < 100) {
@@ -87,6 +92,7 @@ const Gameboard = (props: Props) => {
     }
   });
 
+  /* startar spel */
   function StartGame() {
     setIsGameOver(false);
     setScore(0);
